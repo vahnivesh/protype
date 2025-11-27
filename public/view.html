@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Identity – DIF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white min-h-screen">
+
+  <!-- Header -->
+  <header class="border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <div class="flex items-center justify-between">
+        <a href="dashboard.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-black">DIF</h1>
+            <p class="text-sm text-gray-600">Digital Identity Firewall</p>
+          </div>
+        </a>
+        <a href="dashboard.html" class="text-sm text-gray-600 hover:text-black transition-colors flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-6 py-12">
+    
+    <!-- Page Title -->
+    <div class="mb-8">
+      <h2 class="text-3xl font-bold text-black mb-2">Your Identity</h2>
+      <p class="text-gray-600">View and manage your digital identity details</p>
+    </div>
+
+    <!-- Identity Card -->
+    <div id="content" class="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-sm mb-6">
+      <div class="flex items-center justify-center py-8">
+        <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-black"></div>
+        <span class="ml-3 text-gray-600">Loading identity...</span>
+      </div>
+    </div>
+
+    <!-- Actions Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      <a href="verify.html" class="group bg-gradient-to-br from-purple-600 to-purple-700 text-white rounded-xl p-6 hover:from-purple-700 hover:to-purple-800 transition-all transform hover:scale-105 duration-200 shadow-sm hover:shadow-lg">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-1">Verify Accounts</h3>
+        <p class="text-sm text-purple-100">Link and verify social accounts</p>
+      </a>
+
+      <a href="search.html" class="group bg-gradient-to-br from-green-600 to-green-700 text-white rounded-xl p-6 hover:from-green-700 hover:to-green-800 transition-all transform hover:scale-105 duration-200 shadow-sm hover:shadow-lg">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-1">Search Profile</h3>
+        <p class="text-sm text-green-100">Find other verified profiles</p>
+      </a>
+
+      <a href="dashboard.html" class="group bg-black text-white rounded-xl p-6 hover:bg-gray-800 transition-all transform hover:scale-105 duration-200 shadow-sm hover:shadow-lg">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-12 h-12 bg-white bg-opacity-10 rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <svg class="w-5 h-5 opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold mb-1">Main Page</h3>
+        <p class="text-sm text-gray-300">Return to dashboard</p>
+      </a>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 mt-16">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <p class="text-sm text-gray-500 text-center">Secure identity management powered by DIF</p>
+    </div>
+  </footer>
+
+  <!-- Floating Bottom Navigation Bar (Linux-inspired) -->
+  <nav class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50">
+    <div class="bg-black/95 backdrop-blur-xl border border-gray-800 rounded-xl shadow-2xl px-1 py-1">
+      <div class="flex items-center gap-0.5">
+        
+        <!-- Home -->
+        <a href="index.html" class="group relative flex items-center justify-center w-14 h-12 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95">
+          <div class="relative">
+            <svg class="w-5 h-5 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+            </svg>
+          </div>
+          <!-- Active indicator -->
+          <div class="absolute bottom-1 w-4 h-0.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </a>
+
+        <!-- Divider -->
+        <div class="w-px h-8 bg-gray-700"></div>
+
+        <!-- Security -->
+        <a href="security.html" class="group relative flex items-center justify-center w-14 h-12 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95">
+          <div class="relative">
+            <svg class="w-5 h-5 text-white transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <!-- Notification badge -->
+            <div class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-500 rounded-full border border-black"></div>
+          </div>
+          <div class="absolute bottom-1 w-4 h-0.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </a>
+
+        <!-- Divider -->
+        <div class="w-px h-8 bg-gray-700"></div>
+
+        <!-- Settings -->
+        <a href="settings.html" class="group relative flex items-center justify-center w-14 h-12 rounded-lg hover:bg-white/10 transition-all duration-200 active:scale-95">
+          <div class="relative">
+            <svg class="w-5 h-5 text-white transition-transform group-hover:scale-110 group-hover:rotate-45 duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-1 w-4 h-0.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </a>
+
+      </div>
+    </div>
+  </nav>
+
+<script>
+function openDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open("DIF_DB", 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains("identity")) {
+        db.createObjectStore("identity", { keyPath: "id" });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+  });
+}
+
+async function loadIdentity() {
+  const db = await openDB();
+  const tx = db.transaction("identity", "readonly");
+  const req = tx.objectStore("identity").get("default");
+
+  req.onsuccess = () => {
+    const data = req.result;
+    const box = document.getElementById("content");
+
+    if (!data) {
+      box.innerHTML = `
+        <div class="text-center py-8">
+          <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+            </svg>
+          </div>
+          <p class="text-lg font-semibold text-black mb-2">No Identity Found</p>
+          <p class="text-gray-600 mb-4">Create a new identity to get started</p>
+          <a href="generate.html" class="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            Create Identity
+          </a>
+        </div>
+      `;
+      return;
+    }
+
+   box.innerHTML = `
+      <div class="space-y-6">
+        
+        <!-- Header with Avatar -->
+        <div class="flex items-start gap-6 pb-6 border-b border-gray-200">
+          <div class="w-20 h-20 bg-black rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+            </svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-2xl font-bold text-black mb-1">${data.fullName}</h3>
+            <p class="text-lg text-gray-600 mb-3">@${data.username}</p>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+              <span class="text-sm font-medium text-green-700">Active Identity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Identity Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+              </svg>
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Public Fingerprint</p>
+            </div>
+            <p class="text-sm font-mono text-black break-all leading-relaxed">${data.publicFP}</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-5 border border-gray-200">
+            <div class="flex items-center gap-2 mb-3">
+              <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">Created</p>
+            </div>
+            <p class="text-sm text-black font-medium">${new Date(data.createdAt).toLocaleDateString('en-US', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit'
+            })}</p>
+          </div>
+
+        </div>
+
+        <!-- Verified Accounts Section -->
+        <div class="pt-6 border-t border-gray-200">
+          <div class="flex items-center gap-2 mb-4">
+            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+            <h3 class="text-lg font-semibold text-black">Verified Accounts</h3>
+          </div>
+          
+          ${
+            data.verified && data.verified.instagram
+              ? `
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-5 border border-purple-200">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                      <p class="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-1">Instagram</p>
+                      <a href="${data.verified.instagram.url}" target="_blank" class="text-base font-semibold text-purple-900 hover:text-purple-700 transition-colors flex items-center gap-1 group">
+                        @${data.verified.instagram.username}
+                        <svg class="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="flex items-center gap-1 text-green-600">
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              `
+              : `
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 text-center">
+                  <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                  </div>
+                  <p class="text-sm font-medium text-gray-600 mb-1">No verified social accounts yet</p>
+                  <p class="text-xs text-gray-500 mb-4">Connect your accounts to verify your identity</p>
+                  <a href="verify.html" class="inline-flex items-center gap-2 px-4 py-2 bg-black text-white text-sm rounded-lg font-semibold hover:bg-gray-800 transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                    </svg>
+                    Verify Account
+                  </a>
+                </div>
+              `
+          }
+        </div>
+
+      </div>
+    `;
+
+  };
+}
+
+loadIdentity();
+</script>
+
+</body>
+</html>

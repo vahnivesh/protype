@@ -1,1 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>DIF – Digital Identity Firewall</title>
 
+  <!-- Tailwind CDN (for production, compile your own build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: "#050509",
+            accent: "#111827",
+            primary: "#000000",
+          },
+          fontFamily: {
+            sans: ["Inter", "system-ui", "sans-serif"],
+            mono: ["JetBrains Mono", "Fira Code", "monospace"],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* Soft gradient background blobs */
+    .blob {
+      filter: blur(60px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Simple fade-in animation on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-white text-black font-sans antialiased">
+
+  <!-- Splash Screen -->
+  <div
+    id="splash"
+    class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black text-white transition-opacity duration-700"
+  >
+    <div class="relative max-w-lg text-center px-6">
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+        DIF
+      </h1>
+      <div class="mb-3 text-xs tracking-[0.35em] uppercase text-gray-400">
+        Digital Identity Firewall
+      </div>
+      <p
+        id="typeText"
+        class="text-lg md:text-2xl font-mono text-gray-200 h-8 md:h-10"
+      ></p>
+      <p class="mt-6 text-xs text-gray-500 uppercase tracking-[0.25em]">
+        By Onatt Tech Pvt Ltd
+      </p>
+    </div>
+  </div>
+
+  <!-- Background blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="blob absolute -top-32 -left-10 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply"></div>
+    <div class="blob absolute -bottom-40 -right-10 w-72 h-72 bg-sky-400 rounded-full mix-blend-multiply"></div>
+    <div class="blob absolute top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply"></div>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page" class="opacity-0 transition-opacity duration-700">
+
+    <!-- Header -->
+    <header class="border-b border-gray-200 bg-white/80 backdrop-blur-lg sticky top-0 z-30">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
+        <!-- Logo / Brand -->
+        <a href="#top" class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-black flex items-center justify-center shadow-sm">
+            <svg
+              class="w-5 h-5 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+          </div>
+          <div class="leading-tight">
+            <p class="text-lg font-bold tracking-tight">DIF</p>
+            <p class="text-xs text-gray-500">Digital Identity Firewall</p>
+          </div>
+        </a>
+
+        <!-- Nav -->
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          <a href="#what" class="text-gray-600 hover:text-black transition-colors">
+            What is DIF
+          </a>
+          <a href="#how" class="text-gray-600 hover:text-black transition-colors">
+            How it Works
+          </a>
+          <a href="#future" class="text-gray-600 hover:text-black transition-colors">
+            Future & Roadmap
+          </a>
+          <a href="#faq" class="text-gray-600 hover:text-black transition-colors">
+            FAQ
+          </a>
+        </nav>
+
+        <!-- CTA -->
+        <div class="flex items-center gap-2">
+          <a
+            href="dashboard.html"  <!-- change to your actual app path (e.g. app/index.html) -->
+            <span>Launch DIF</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <main id="top" class="max-w-6xl mx-auto px-4 md:px-6 pt-12 md:pt-20 pb-16 space-y-24">
+      <section class="grid md:grid-cols-[minmax(0,1.3fr),minmax(0,1fr)] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white/70 backdrop-blur px-3 py-1 mb-4 text-xs text-gray-600 shadow-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+            Local-first identity, server-safe fingerprints.
+          </div>
+          <h1 class="text-3xl md:text-5xl font-semibold tracking-tight mb-4">
+            Own your identity.<br class="hidden md:block" />
+            <span class="underline decoration-black/20">Firewall</span> it before the internet does.
+          </h1>
+          <p class="text-gray-600 text-sm md:text-base leading-relaxed mb-6">
+            DIF (Digital Identity Firewall) is a local-first identity layer that keeps your
+            private fingerprint on your device, and only exposes a minimal, encrypted
+            public fingerprint to the cloud. No classic passwords, no data-harvesting
+            logins—just cryptographic proof that <span class="font-semibold">you are you</span>.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 mb-6">
+           <a
+            href="dashboard.html"
+            class="inline-flex items-center gap-2 rounded-xl bg-black text-white text-sm font-semibold px-5 py-3 hover:bg-gray-900 active:scale-95 transition-all shadow-lg shadow-black/10"
+            >
+            Launch DIF
+            <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+                <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+                />
+            </svg>
+            </a>
+
+
+            <a
+              href="#how"
+              class="inline-flex items-center gap-2 text-sm font-medium text-gray-800 px-3 py-2 rounded-lg hover:bg-gray-100 active:scale-95 transition-all"
+            >
+              How DIF works
+              <svg
+                class="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs text-gray-500">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Local-first storage (IndexedDB)
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+              Encrypted public fingerprint on cloud
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-purple-500"></span>
+              Designed & built by Onatt Tech Pvt Ltd
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <!-- Glassy card stack -->
+          <div class="relative">
+            <div class="absolute -inset-6 bg-gradient-to-tr from-black/5 via-transparent to-black/10 rounded-3xl blur-2xl"></div>
+            <div class="relative space-y-4">
+              <div class="bg-white/80 backdrop-blur-xl border border-gray-200 rounded-3xl p-5 shadow-lg shadow-black/5">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="text-xs font-semibold uppercase tracking-[0.15em] text-gray-500">
+                    Active Identity
+                  </span>
+                  <span class="flex items-center gap-1 text-xs text-emerald-600">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    Secure
+                  </span>
+                </div>
+                <div class="space-y-2 text-sm">
+                  <div>
+                    <p class="text-[10px] uppercase text-gray-400 tracking-[0.18em] mb-0.5">
+                      Full Name
+                    </p>
+                    <p class="font-medium text-gray-900">Jane Doe</p>
+                  </div>
+                  <div>
+                    <p class="text-[10px] uppercase text-gray-400 tracking-[0.18em] mb-0.5">
+                      DIF Username
+                    </p>
+                    <p class="font-mono text-[13px]">@janedoe_dif</p>
+                  </div>
+                  <div>
+                    <p class="text-[10px] uppercase text-gray-400 tracking-[0.18em] mb-0.5">
+                      Public Fingerprint
+                    </p>
+                    <p class="font-mono text-[11px] text-gray-700 break-all">
+                      5dc4b4e11745dd89…e3556
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-black text-white rounded-3xl p-5 shadow-xl shadow-black/30 translate-x-4">
+                <p class="text-xs text-gray-400 mb-2 uppercase tracking-[0.2em]">
+                  Identity Strength
+                </p>
+                <p class="text-sm mb-4">
+                  DIF analyses how well your identity is anchored across verified
+                  accounts—without reading your private data.
+                </p>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between text-xs">
+                    <span>Verification Coverage</span>
+                    <span class="font-semibold">82%</span>
+                  </div>
+                  <div class="w-full h-1.5 rounded-full bg-white/10 overflow-hidden">
+                    <div class="h-full w-4/5 bg-gradient-to-r from-emerald-400 to-sky-400 rounded-full"></div>
+                  </div>
+                  <div class="flex items-center gap-2 text-[11px] text-gray-300">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    Instagram / X / Email DNS verified
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-white/90 backdrop-blur-xl border border-dashed border-gray-300 rounded-2xl p-3 flex items-center justify-between text-xs">
+                <div>
+                  <p class="font-medium text-gray-800">Passwordless by design</p>
+                  <p class="text-gray-500">
+                    DIF is built to pair with passkeys, QR logins and device biometrics.
+                  </p>
+                </div>
+                <div class="flex items-center justify-center w-10 h-10 rounded-xl bg-black text-white">
+                  <svg
+                    class="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 11c0-1.105.895-2 2-2s2 .895 2 2-.895 2-2 2-2-.895-2-2zm0 0V7a4 4 0 00-8 0v4a8 8 0 0016 0v-1"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- What is DIF -->
+      <section id="what" class="reveal">
+        <div class="mb-6">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            What is DIF?
+          </h2>
+          <p class="text-sm md:text-base text-gray-600 max-w-3xl">
+            DIF is a <span class="font-semibold">digital identity firewall</span>—a
+            layer that sits between you and the internet. It doesn’t replace your
+            existing accounts; it reinforces them. Your real identity lives on your
+            device, in encrypted storage. Only a <em>public fingerprint</em> and
+            verification signals are shared to the cloud.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+          <div class="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="w-9 h-9 rounded-lg bg-black text-white flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold mb-1.5">Local-first by default</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Your private fingerprint, identity graph and sensitive details stay
+              on your device in IndexedDB—never shipped as plain text to any server.
+            </p>
+          </div>
+
+          <div class="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="w-9 h-9 rounded-lg bg-black text-white flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M4 6h8m-8 4h5m-5 4h3"
+                />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold mb-1.5">Public fingerprint, private story</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              DIF publishes only hashed, encrypted fingerprints to the cloud so
+              apps can verify you—without ever seeing your raw data.
+            </p>
+          </div>
+
+          <div class="bg-white/80 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all">
+            <div class="w-9 h-9 rounded-lg bg-black text-white flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-sm font-semibold mb-1.5">Verification without friction</h3>
+            <p class="text-xs text-gray-600 leading-relaxed">
+              Link and verify your social accounts (like Instagram, X, email) once,
+              then re-use that trust across platforms with a single DIF identity.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section id="how" class="reveal">
+        <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-6">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+              How DIF protects your identity
+            </h2>
+            <p class="text-sm md:text-base text-gray-600 max-w-xl">
+              Under the hood, DIF behaves like a firewall: it filters what the
+              outside world can see, while you maintain the full identity vault
+              locally.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+          <div class="bg-black text-white rounded-2xl p-5 shadow-lg shadow-black/20">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-400 mb-2">
+              Step 1
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">Create your identity vault</h3>
+            <p class="text-xs text-gray-200 mb-3">
+              DIF generates a private fingerprint keypair and stores it securely
+              on your device (IndexedDB / secure storage).
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-gray-300">
+              <li>• No server-side passwords</li>
+              <li>• Key material never leaves your device</li>
+              <li>• Works with passkeys / biometrics</li>
+            </ul>
+          </div>
+
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500 mb-2">
+              Step 2
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">Publish a public fingerprint</h3>
+            <p class="text-xs text-gray-600 mb-3">
+              DIF derives a one-way public fingerprint and pushes <em>only that</em>
+              to the cloud, alongside optional encrypted metadata.
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-gray-600">
+              <li>• Firebase stores encrypted fingerprints</li>
+              <li>• No raw PII is required</li>
+              <li>• You can revoke and regenerate anytime</li>
+            </ul>
+          </div>
+
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500 mb-2">
+              Step 3
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">Verify once, reuse everywhere</h3>
+            <p class="text-xs text-gray-600 mb-3">
+              DIF uses verification flows (like Instagram bio codes, future passkey
+              checks, etc.) to prove accounts are really yours.
+            </p>
+            <ul class="space-y-1.5 text-[11px] text-gray-600">
+              <li>• Link multiple platforms to one DIF identity</li>
+              <li>• Share a single DIF link instead of 10 handles</li>
+              <li>• Apps can trust DIF without storing your login</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future & Roadmap -->
+      <section id="future" class="reveal">
+        <div class="mb-6">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            The future of DIF
+          </h2>
+          <p class="text-sm md:text-base text-gray-600 max-w-3xl">
+            DIF is not just a tool—it’s an identity layer we want creators,
+            developers and everyday users to build on. The roadmap focuses on
+            <span class="font-semibold">passwordless auth</span>, stronger
+            <span class="font-semibold">social verification</span> and
+            <span class="font-semibold">zero-knowledge scoring</span>.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4 md:gap-6">
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500 mb-2">
+              Near term
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">Passkey-native logins</h3>
+            <p class="text-xs text-gray-600">
+              Seamless QR + passkey flows: scan on your phone, use biometrics and
+              restore your entire DIF identity into any browser, without typing a
+              single password.
+            </p>
+          </div>
+
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-5 shadow-sm">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-500 mb-2">
+              Mid term
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">Multi-platform verification graph</h3>
+            <p class="text-xs text-gray-600">
+              Verified links across Instagram, X, email DNS, GitHub and more,
+              aggregated into a single DIF trust graph—without exposing private
+              messages or content.
+            </p>
+          </div>
+
+          <div class="bg-black text-white rounded-2xl p-5 shadow-lg shadow-black/25">
+            <p class="text-[11px] uppercase tracking-[0.22em] text-gray-400 mb-2">
+              Long term
+            </p>
+            <h3 class="text-sm font-semibold mb-1.5">AI-assisted identity strength</h3>
+            <p class="text-xs text-gray-200">
+              Local AI models that assess your identity strength, flag risky
+              patterns and suggest safer ways to share your online presence—
+              without ever uploading your raw data.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="reveal">
+        <div class="mb-4">
+          <h2 class="text-2xl md:text-3xl font-semibold tracking-tight mb-2">
+            Questions, answered.
+          </h2>
+          <p class="text-sm md:text-base text-gray-600 max-w-2xl">
+            A quick snapshot of what DIF is and isn’t.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 md:gap-6 text-sm">
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-4 md:p-5">
+            <h3 class="font-semibold mb-1.5">Is DIF another social network?</h3>
+            <p class="text-gray-600 text-xs md:text-sm">
+              No. DIF doesn’t replace your accounts. It acts like a digital passport
+              that proves those accounts are really yours, so apps don’t have to
+              constantly re-KYC or harvest more data.
+            </p>
+          </div>
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-4 md:p-5">
+            <h3 class="font-semibold mb-1.5">Where is my identity actually stored?</h3>
+            <p class="text-gray-600 text-xs md:text-sm">
+              Your core identity vault lives in your browser/device (IndexedDB or
+              secure local storage). The cloud only sees encrypted, minimal
+              fingerprints and verification flags.
+            </p>
+          </div>
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-4 md:p-5">
+            <h3 class="font-semibold mb-1.5">Can I move my identity to another device?</h3>
+            <p class="text-gray-600 text-xs md:text-sm">
+              Yes. DIF is designed to work with QR + passkey flows so you can
+              securely re-hydrate your identity vault on a new browser without
+              exposing your private keys to any server.
+            </p>
+          </div>
+          <div class="bg-white/90 backdrop-blur border border-gray-200 rounded-2xl p-4 md:p-5">
+            <h3 class="font-semibold mb-1.5">Who is building DIF?</h3>
+            <p class="text-gray-600 text-xs md:text-sm">
+              DIF is built and maintained by
+              <span class="font-semibold">Onatt Tech Pvt Ltd</span>, with a focus
+              on privacy-first tools for creators and everyday internet users.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-200 bg-white/80 backdrop-blur">
+      <div class="max-w-6xl mx-auto px-4 md:px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-xs md:text-sm text-gray-500">
+          © <span id="year"></span> DIF – Digital Identity Firewall. All rights reserved.
+        </p>
+        <p class="text-xs md:text-sm text-gray-700 font-medium">
+          By <span class="font-semibold">Onatt Tech Pvt Ltd</span>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Typewriter logic for splash
+    const phrases = ["make a difference", "protect your identity"];
+    const typeEl = document.getElementById("typeText");
+
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeLoop() {
+      const current = phrases[phraseIndex];
+
+      if (!isDeleting) {
+        charIndex++;
+        typeEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex === current.length) {
+          if (phraseIndex === 0) {
+            // finished first phrase -> pause then delete
+            return setTimeout(() => {
+              isDeleting = true;
+              typeLoop();
+            }, 900);
+          } else {
+            // finished second phrase -> show for a bit then hide splash
+            return setTimeout(() => {
+              const splash = document.getElementById("splash");
+              const page = document.getElementById("page");
+              splash.classList.add("opacity-0", "pointer-events-none");
+              page.classList.remove("opacity-0");
+            }, 900);
+          }
+        }
+      } else {
+        charIndex--;
+        typeEl.textContent = current.slice(0, charIndex);
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          phraseIndex++;
+        }
+      }
+
+      const delay = isDeleting ? 40 : 80;
+      setTimeout(typeLoop, delay);
+    }
+
+    window.addEventListener("load", () => {
+      setTimeout(typeLoop, 400);
+    });
+
+    // Simple scroll reveal
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
+
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
