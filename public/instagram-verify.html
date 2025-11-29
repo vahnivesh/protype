@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verify Instagram – DIF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white min-h-screen">
+
+  <!-- Header -->
+  <header class="border-b border-gray-200">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <div class="flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+          <div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl font-bold text-black">DIF</h1>
+            <p class="text-sm text-gray-600">Digital Identity Firewall</p>
+          </div>
+        </a>
+        <a href="verify.html" class="text-sm text-gray-600 hover:text-black transition-colors flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to Verify
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-2xl mx-auto px-6 py-12">
+    
+    <!-- Page Title with Instagram Branding -->
+    <div class="mb-8 text-center">
+      <div class="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </div>
+      <h2 class="text-3xl font-bold text-black mb-2">Verify Instagram Account</h2>
+      <p class="text-gray-600">Connect your Instagram profile to your DIF identity</p>
+    </div>
+
+    <!-- Instruction Steps -->
+    <div class="mb-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-6 border border-purple-200">
+      <h3 class="text-sm font-semibold text-purple-900 mb-3 flex items-center gap-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        How it works
+      </h3>
+      <ol class="space-y-2 text-sm text-purple-800">
+        <li class="flex gap-2">
+          <span class="font-semibold">1.</span>
+          <span>Enter your Instagram username below</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold">2.</span>
+          <span>You'll receive a verification code to add to your bio</span>
+        </li>
+        <li class="flex gap-2">
+          <span class="font-semibold">3.</span>
+          <span>We'll verify the code and link your account</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- Input Card -->
+    <div class="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-sm mb-6">
+      <label class="block mb-2">
+        <div class="flex items-center gap-2 mb-3">
+          <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+          <span class="text-sm font-semibold text-black uppercase tracking-wide">Instagram Username</span>
+        </div>
+        <div class="relative">
+          <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-medium">@</span>
+          <input 
+            id="instaHandle"
+            placeholder="username"
+            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-600 focus:outline-none transition-colors text-black placeholder-gray-400" 
+          />
+        </div>
+        <p class="mt-2 text-xs text-gray-500">Enter without the @ symbol</p>
+      </label>
+
+      <button 
+        id="continueBtn"
+        class="w-full mt-6 px-6 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg font-semibold hover:from-pink-600 hover:to-purple-700 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-sm hover:shadow-lg flex items-center justify-center gap-2 group">
+        <span>Continue</span>
+        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </button>
+
+      <p id="errorBox" class="hidden mt-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm flex items-start gap-2">
+        <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <span id="errorText"></span>
+      </p>
+    </div>
+
+    <!-- Security Notice -->
+    <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-black mb-1">Privacy Protected</p>
+          <p class="text-xs text-gray-600">Your Instagram username is hashed before being stored. We never store your password or access your account.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 mt-16">
+    <div class="max-w-5xl mx-auto px-6 py-6">
+      <p class="text-sm text-gray-500 text-center">Secure identity management powered by DIF</p>
+    </div>
+  </footer>
+
+<!-- MUST BE type="module" -->
+<script type="module">
+  import { isInstagramHashUsed } from "./firebase-config.js";
+
+  console.log("instagram-verify.js loaded");
+
+  const handleInput = document.getElementById("instaHandle");
+  const btn = document.getElementById("continueBtn");
+  const errorBox = document.getElementById("errorBox");
+  const errorText = document.getElementById("errorText");
+
+  // SHA-256 HASher
+  async function sha256Hex(text) {
+    const enc = new TextEncoder();
+    const data = enc.encode(text);
+    const hash = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(hash))
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("");
+  }
+
+  btn.onclick = async () => {
+    console.log("Continue clicked");
+
+    errorBox.classList.add("hidden");
+
+    let username = handleInput.value.trim().toLowerCase();
+    if (!username) {
+      errorText.textContent = "Please enter a valid Instagram username.";
+      errorBox.classList.remove("hidden");
+      return;
+    }
+
+    if (username.startsWith("@")) username = username.slice(1);
+
+    console.log("username:", username);
+
+    // HASH username
+    const hash = await sha256Hex(username);
+    console.log("Hashed:", hash);
+
+    // CHECK IF ALREADY USED
+    const used = await isInstagramHashUsed(hash);
+    console.log("Used?:", used);
+
+    if (used) {
+      errorText.textContent =
+        "This Instagram account is already linked to another DIF identity.";
+      errorBox.classList.remove("hidden");
+      return;
+    }
+
+    // PASS
+    console.log("Redirecting to code page...");
+    window.location.href =
+      `instagram-verify-code.html?user=${encodeURIComponent(username)}`;
+  };
+</script>
+
+</body>
+</html>
