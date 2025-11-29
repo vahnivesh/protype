@@ -234,13 +234,18 @@
       // ✅ CHECK IF PASSKEY ALREADY EXISTS
       // -------------------------------
       const passkeyPath = ref(db, "passkeys/" + currentIdentity.username);
-      console.log("Passkey Firebase Response:", existing.val());
+      
+      // FIRST fetch the data
       const existing = await get(passkeyPath);
-    
+      
+      // THEN log it (now it's defined)
+      console.log("Passkey Firebase Response:", existing.val());
+      
+      // Now check
       if (existing.exists() && existing.val().status === "registered") {
         startBtn.disabled = true;
         startBtn.classList.add("opacity-40");
-    
+      
         statusMsg.classList.remove("empty:hidden");
         statusMsg.innerHTML = `
           <div class="flex items-start gap-3">
@@ -253,23 +258,22 @@
             </p>
           </div>
         `;
-    
-        // Delete button
+      
         const delBtn = document.createElement("button");
         delBtn.className =
           "w-full mt-4 px-6 py-3 bg-red-600 text-white rounded-lg font-semibold hover:bg-red-700 transition";
         delBtn.innerText = "Delete Passkey";
-    
+      
         delBtn.onclick = async () => {
           await set(passkeyPath, null);
           alert("Passkey deleted. Refresh the page.");
           location.reload();
         };
-    
+      
         statusMsg.appendChild(delBtn);
-    
-        return; // stop further passkey setup
+        return;
       }
+
     })();
 
 
@@ -355,5 +359,6 @@
 </body>
 
 </html>
+
 
 
