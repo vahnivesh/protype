@@ -139,7 +139,7 @@
 
     // Start polling the bot verification status
     function startChecking(username) {
-      const api = "https://dif-telegram-bot.onrender.com/status?username=" + username;
+      const api = "https://vaporous-merri-transseptal.ngrok-free.dev/status?username=" + username;
 
       const interval = setInterval(() => {
         fetch(api)
@@ -184,7 +184,7 @@
         </div>
       `;
 
-      const api = "https://dif-telegram-bot.onrender.com/generate?username=" + encodeURIComponent(username);
+      const api = "https://vaporous-merri-transseptal.ngrok-free.dev/generate?username=" + encodeURIComponent(username);
 
       fetch(api)
         .then(res => {
@@ -245,5 +245,6 @@
 
 </body>
 </html>
+
 
 
