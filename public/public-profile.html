@@ -257,48 +257,83 @@
       return;
     }
 
-    const links = linkSnap.val();
+        const links = linkSnap.val();
     let hasVerified = false;
     verifiedList.innerHTML = "";
 
     // ====================================
     // INSTAGRAM — HASH-BASED VERIFICATION
     // ====================================
+    if (links.instagram) {
+      hasVerified = true;
+
+      const igHash = links.instagram; // hash
+
+      verifiedList.innerHTML += `
+        <div class="group flex items-center justify-between bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-5 border hover:border-purple-400">
+
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
+              <!-- Instagram icon -->
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5A3.5 3.5 0 1 0 12 15a3.5 3.5 0 0 0 0-7z"/>
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-xs font-semibold text-purple-700 uppercase tracking-wide">Instagram</p>
+              <p class="text-base font-semibold text-purple-900">Verified ✓</p>
+            </div>
+          </div>
+
+          <span class="text-[10px] opacity-60">${igHash.slice(0, 10)}…</span>
+
+        </div>
+      `;
+    }
+
     // ====================================
-// INSTAGRAM — HASH-BASED VERIFICATION
-// ====================================
-if (links.instagram) {
-  hasVerified = true;
+    // TELEGRAM — HASH-BASED VERIFICATION
+    // ====================================
+    if (links.telegram) {
+      hasVerified = true;
 
-  const igHash = links.instagram; // <-- correct field
+      const tgHash = links.telegram;
 
-  verifiedList.innerHTML += `
-    <div class="group flex items-center justify-between bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-5 border hover:border-purple-400">
+      verifiedList.innerHTML += `
+        <div class="group flex items-center justify-between bg-gradient-to-r from-sky-50 to-blue-50 rounded-lg p-5 border hover:border-sky-400">
 
-      <div class="flex items-center gap-4">
-        <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-lg flex items-center justify-center">
-          <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2.163c3.204 0 ..."></path>
-          </svg>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-sky-500 rounded-lg flex items-center justify-center">
+              <!-- Telegram icon -->
+              <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0ZM17.5452 8.28747L15.8578 16.2213C15.7328 16.7918 15.3954 16.93 14.9091 16.654L12.3598 14.7725L11.1278 15.9613C10.9903 16.0988 10.8746 16.2145 10.6122 16.2145L10.7935 13.6213L15.5529 9.32305C15.7591 9.13989 15.5061 9.03552 15.2284 9.21868L9.45673 12.8524L6.94566 12.0676C6.39955 11.8968 6.38891 11.536 7.05924 11.2599L16.8774 7.32669C17.3368 7.14662 17.742 7.42196 17.5452 8.28747Z" />
+              </svg>
+            </div>
+
+            <div>
+              <p class="text-xs font-semibold text-sky-700 uppercase tracking-wide">Telegram</p>
+              <p class="text-base font-semibold text-sky-900">Verified ✓</p>
+            </div>
+          </div>
+
+          <span class="text-[10px] opacity-60">${tgHash.slice(0, 10)}…</span>
+
         </div>
-
-        <div>
-          <p class="text-xs font-semibold text-purple-700 uppercase tracking-wide">Instagram</p>
-          <p class="text-base font-semibold text-purple-900">Verified ✓</p>
-        </div>
-      </div>
-
-      <span class="text-[10px] opacity-60">${igHash.slice(0, 10)}...</span>
-
-    </div>
-  `;
-}
-
+      `;
+    }
 
     // If nothing verified
     if (!hasVerified) {
-      verifiedList.innerHTML = `<p>No verified accounts</p>`;
+      verifiedList.innerHTML = `
+        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200 text-center">
+          <p class="text-sm text-gray-600">No verified accounts</p>
+        </div>
+      `;
     }
+
+
+    
 
     } // <-- CLOSE loadProfile() properly
 
